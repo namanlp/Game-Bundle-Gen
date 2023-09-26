@@ -4,6 +4,7 @@ from mlxtend.preprocessing import TransactionEncoder
 
 
 # Import the Data
+# You can use any other xlsx file, as per requirement
 data = pd.read_excel('./Games_Purchase_Data.xlsx')
 
 # Convert the data in the form of array of arrays
@@ -25,9 +26,10 @@ encoded_transactions = te.transform(transactions)
 encoded_transactions_df = pd.DataFrame(encoded_transactions)
 
 # Use FP Growth and find trends
+# You can edit minimum support as per requirement
 frequent_item_set = fpgrowth(encoded_transactions_df, min_support=0.20)
 
-# Sorting thee result
+# Sorting the result
 frequent_item_set = frequent_item_set.sort_values(by="support", ascending=False)
 print("\nTop 10 Trending Game Bundles are :\n")
 # print(frequent_item_set)
